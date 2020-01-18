@@ -13,7 +13,9 @@ public class EmployeesApi {
     }
 
     public LinkedList<Employees> getEmployees() {
-        return null;
+
+        return   new EmployeesDAO().getAll();
+
     }
 
     public boolean login(String username, String password) {
