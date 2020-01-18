@@ -8,11 +8,11 @@ import java.sql.Statement;
 public class DbConnector {
 
     private static final String
-            db_name = "r2i5507sdonfc3x9",
-            host = "qzkp8ry756433yd4.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+            db_name = "biblio_soac",
+            host = "localhost",
             port = "3306",
-            user = "yuj6nky2uwoyqknc",
-            pass = "yyo4sh8elx1ecd2l";
+            user = "root",
+            pass = "";
 
  /*  private static final String
             db_name = "soc_imm",

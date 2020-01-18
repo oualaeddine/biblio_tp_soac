@@ -15,4 +15,6 @@ public interface DAOInterface {
     boolean delete(Object object);
 
     LinkedList getAll();
+
+    public abstract int countAll();
 }
