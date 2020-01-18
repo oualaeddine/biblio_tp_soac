@@ -1,6 +1,7 @@
 package soac.miniprojet.servlets;
 
 import soac.miniprojet.api.EmployeesApi;
+import soac.miniprojet.model.beans.Employees;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -27,7 +28,8 @@ public class UsersServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LinkedList<EmployeesHomeStub.Employees> users = new EmployeesApi().getEmployees();
+		LinkedList<Employees> users;
+		users = new EmployeesApi().getEmployees();
 		request.setAttribute("users",users);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/app_views/Users.jsp").forward(request, response);
 	}
