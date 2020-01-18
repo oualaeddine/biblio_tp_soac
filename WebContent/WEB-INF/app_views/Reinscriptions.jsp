@@ -1,5 +1,6 @@
-<%@ page import="soac.miniprojet.model.dao.StudentsHomeStub" %>
-<%@ page import="java.util.LinkedList" %><%--
+<%@ page import="soac.miniprojet.model.dao.daos.StudentsDAO" %>
+<%@ page import="java.util.LinkedList" %>
+<%@ page import="soac.miniprojet.model.beans.Students" %><%--
   Created by IntelliJ IDEA.
   User: Ouala Eddine
   Date: 03/01/2020
@@ -79,9 +80,11 @@
                     </ul>
                 </div>
             </nav>
+
             <div class="container-fluid">
                 <div class="d-sm-flex justify-content-between align-items-center mb-4">
                     <h3 class="text-dark mb-0">Reinscriptions</h3>
+
                 </div>
                 <div class="row">
                     <div class="col-lg-7 col-xl-12">
@@ -113,8 +116,8 @@
                                         </thead>
                                         <tbody>
                                         <%
-                                            LinkedList<StudentsHomeStub.Students> studs = (LinkedList<StudentsHomeStub.Students>) request.getAttribute("students");
-                                            for (StudentsHomeStub.Students student : studs) {
+                                            LinkedList<Students> studs = (LinkedList<Students>) request.getAttribute("students");
+                                            for (Students student : studs) {
                                         %>
                                         <tr>
                                             <td><%= student.getId()%>
@@ -136,11 +139,59 @@
                                                 <%= student.getDateInsc()%>
                                             </td>
                                             <td class="text-center" style="padding-top: 0px;">
-                                                <br>
-                                                <button class="btn btn-danger" type="button"><i
-                                                        class="fa fa-remove"></i></button>
-                                                <button class="btn btn-primary" type="button"><i
-                                                        class="fa fa-pecil"></i></button>
+                                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#staticBackdrop"><i class="fa fa-recycle"></i>
+                                                    Réinscrire
+                                                </button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade " id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
+                                                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <form>
+
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="staticBackdropLabel">Réinscrire un etudiant</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+
+
+                                                                    <div class="form-group">
+                                                                        <label for="disabledTextInput">Niveau en cours</label>
+                                                                        <input type="text" id="disabledTextInput" class="form-control" placeholder="<% %>niveau a retourner">
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label for="niveau">Niveau : </label>
+                                                                        <select id="niveau" name="niveau" class="form-control form-control-lg" >
+                                                                            <option>--Selectionner--</option>
+                                                                            <option value="L1">L1</option>
+                                                                            <option value="L2">L2</option>
+                                                                            <option value="L3">L3</option>
+                                                                            <option value="M1">M1</option>
+                                                                            <option value="M2">M2</option>
+
+                                                                        </select>
+                                                                    </div>
+
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler
+                                                                        </button>
+                                                                        <button type="submit" class="btn btn-success"><i
+                                                                                class="fa fa-dot-circle-o"></i> Réinscrire
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+
                                             </td>
                                         </tr>
                                         <%

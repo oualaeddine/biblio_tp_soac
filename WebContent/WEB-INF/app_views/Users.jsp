@@ -1,7 +1,8 @@
 <%@ page import="java.util.LinkedList" %>
-<%@ page import="soac.miniprojet.model.dao.EmployeesHomeStub" %>
+<%@ page import="soac.miniprojet.model.dao.daos.EmployeesDAO" %>
+<%@ page import="soac.miniprojet.model.beans.Employees" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+         pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Biblio - Utilisateurs</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
@@ -25,27 +27,49 @@
             </a>
             <hr class="sidebar-divider my-0">
             <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                <li class="nav-item" role="presentation"><a class="nav-link" href="Dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="Students"><i class="fas fa-tachometer-alt"></i><span>Gestion des etudiants</span></a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="Inscriptions"><i class="fas fa-tachometer-alt"></i><span>Inscriptions</span></a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="Reinscriptions"><i class="fas fa-tachometer-alt"></i><span>Reinscription</span></a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="Users"><i class="fas fa-tachometer-alt"></i><span>Inscriptions</span></a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="Dashboard"><i
+                        class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="Students"><i
+                        class="fas fa-tachometer-alt"></i><span>Gestion des etudiants</span></a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="Inscriptions"><i
+                        class="fas fa-tachometer-alt"></i><span>Inscriptions</span></a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="Reinscriptions"><i
+                        class="fas fa-tachometer-alt"></i><span>Reinscription</span></a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="Users"><i
+                        class="fas fa-tachometer-alt"></i><span>Inscriptions</span></a></li>
             </ul>
-            <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            <div class="text-center d-none d-md-inline">
+                <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
+            </div>
         </div>
     </nav>
     <div class="d-flex flex-column" id="content-wrapper">
         <div id="content">
             <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
-                <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                <div class="container-fluid">
+                    <button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i
+                            class="fas fa-bars"></i></button>
                     <ul class="nav navbar-nav flex-nowrap ml-auto">
                         <li class="nav-item dropdown no-arrow" role="presentation">
-                            <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
+                            <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
+                                                                       data-toggle="dropdown" aria-expanded="false"
+                                                                       href="#"><span
+                                    class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img
+                                    class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
                                 <div
-                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
+                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                                    <a class="dropdown-item" role="presentation" href="#"><i
+                                            class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a
+                                        class="dropdown-item" role="presentation" href="#"><i
+                                        class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
                                     <a
-                                            class="dropdown-item" role="presentation" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log</a>
-                                    <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                                            class="dropdown-item" role="presentation" href="#"><i
+                                            class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity
+                                        log</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" role="presentation" href="#"><i
+                                            class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
+                                </div>
                             </div>
                         </li>
                     </ul>
@@ -53,13 +77,93 @@
             </nav>
             <div class="container-fluid">
                 <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                    <h3 class="text-dark mb-0">Gestion des etudiants</h3><a class="btn btn-success btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Ajouter un etudiant</a></div>
+                    <h3 class="text-dark mb-0">Gestion des employés</h3>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#staticBackdrop">
+                        Ajouter Employé
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade " id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
+                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <form method="post">
+                            <input type="hidden"  name="action" value="add" >
+
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Ajouter un etudiant</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Nom : </label>
+                                                <input type="text" name="nom" class="form-control" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Prenom : </label>
+                                                <input type="text" name="prenom" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="date" name="date_naiss" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Poste : </label>
+                                            <select name="role" class="form-control form-control-lg" required>
+                                                <option selected disabled value="">--Selectionner--</option>
+                                                <option value="CHEF_DEP">Chef de Département</option>
+                                                <option value="RESP_BIBLIO">Responsable de bibliothèque</option>
+                                                <option value="AGENT_SCOL">Agent de scolarité</option>
+                                                <option value="AGENT_BIBLIO">Agent de bibliothèque</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Nom d'utilisateur : </label>
+                                                <input type="text" name="username" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Mot de passe : </label>
+                                                <input type="password" name="password" class="form-control"
+                                                       id="password" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="confirm_password">Confirmer mot de passe : </label>
+                                                <input type="password" name="confirm_password" class="form-control"
+                                                       id="confirm_password" required>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler
+                                            </button>
+                                            <button type="submit" class="btn btn-success"><i
+                                                    class="fa fa-dot-circle-o"></i>
+
+                                                Ajouter
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-7 col-xl-12">
                         <div class="card shadow mb-4">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h6 class="text-primary font-weight-bold m-0">Liste des etudiants</h6>
-                                <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                <h6 class="text-primary font-weight-bold m-0">Liste du personnel</h6>
+                                <div class="dropdown no-arrow">
+                                    <button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown"
+                                            aria-expanded="false" type="button"><i
+                                            class="fas fa-ellipsis-v text-gray-400"></i></button>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
                                          role="menu"></div>
                                 </div>
@@ -73,13 +177,15 @@
                                             <th>Nom</th>
                                             <th>Prénom</th>
                                             <th>Role</th>
+                                            <th>Nom d'utilisateur</th>
+                                            <th>Mot de passe</th>
                                             <th>Actions</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <%
-                                            LinkedList<EmployeesHomeStub.Employees> users = (LinkedList<EmployeesHomeStub.Employees>)request.getAttribute("users");
-                                            for (EmployeesHomeStub.Employees user : users) {
+                                            LinkedList<Employees> users = (LinkedList<Employees>) request.getAttribute("users");
+                                            for (Employees user : users) {
                                         %>
                                         <tr>
                                             <td><%= user.getId()%>
@@ -90,12 +196,18 @@
                                             </td>
                                             <td><%= user.getRole()%>
                                             </td>
+                                            <td><%= user.getUsername()%>
+                                            </td>
+                                            <td><%= user.getPassword()%>
+                                            </td>
                                             <td class="text-center" style="padding-top: 0px;">
-                                                <br>
+
                                                 <button class="btn btn-danger" type="button"><i
-                                                        class="fa fa-remove"></i></button>
+                                                        class="fa fa-remove"
+                                                        onclick="removeEmp(<%= user.getId()%>)"
+                                                ></i></button>
                                                 <button class="btn btn-primary" type="button"><i
-                                                        class="fa fa-pecil"></i></button>
+                                                        class="fa fa-edit"></i></button>
                                             </td>
                                         </tr>
                                         <%
@@ -110,11 +222,36 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal" tabindex="-1" id="delete_modal" role="dialog">
+            <form method="post">
+                <input type="hidden" id="id_delete" name="id" >
+                <input type="hidden"  name="action" value="delete" >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirmation</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Voulez vous vraiment supprimer cette commande?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Non</button>
+                            <button type="submit" class="btn btn-danger btn-lg">OUI</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
         <footer class="bg-white sticky-footer">
             <div class="container my-auto">
                 <div class="text-center my-auto copyright"><span>Copyright © TP SOAC 2019</span></div>
             </div>
         </footer>
+
     </div>
     <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
 <script src="assets/js/jquery.min.js"></script>
@@ -122,5 +259,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
 <script src="assets/js/theme.js"></script>
 </body>
+
+<script>
+
+    var password = document.getElementById("password")
+        , confirm_password = document.getElementById("confirm_password");
+
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+
+
+    function removeEmp(id) {
+        $('#id_delete').val(id);
+        $('#delete_modal').modal('show');
+    }
+</script>
 
 </html>
