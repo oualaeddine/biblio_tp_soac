@@ -84,20 +84,22 @@ public class InscriptionPeriodDAO extends DAO implements DAOInterface {
 	}
 
 	@Override
-	public LinkedList<BiblioInscPeriod> getAll() {
-		LinkedList<BiblioInscPeriod> list = new LinkedList<>();
+	public LinkedList<InscriptionPeriod> getAll() {
+		LinkedList<InscriptionPeriod> list = new LinkedList<>();
 		ResultSet result;
 		try {
 			result = statement.executeQuery("SELECT * FROM biblio_insc_period;");
 			while (result.next()) {
-				BiblioInscPeriod biblioInscPeriod = new BiblioInscPeriod();
-				biblioInscPeriod.setId(result.getInt("id"));
-				biblioInscPeriod.setDateStart(result.getDate("nom"));
-				biblioInscPeriod.setDateEnd(result.getDate("prenom"));
-				biblioInscPeriod.setScholarYear((ScholarYear) new ScholarYearDAO().getById(result.getInt("scholat_year_id") ));
+                InscriptionPeriod inscriptionPeriod = new InscriptionPeriod();
+                inscriptionPeriod.setId(result.getInt("id"));
+                inscriptionPeriod.setStartInscDate(result.getDate("start_insc_date"));
+                inscriptionPeriod.setStartReinscDate(result.getDate("start_reinsc_date"));
+                inscriptionPeriod.setEndInscDate(result.getDate("end_insc_date"));
+                inscriptionPeriod.setEndReinscDate(result.getDate("end_reinsc_date"));
+                inscriptionPeriod.setScholarYear((ScholarYear) new ScholarYearDAO().getById(result.getInt("scholat_year") ));
 
 
-				list.add(biblioInscPeriod);
+				list.add(inscriptionPeriod);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -107,7 +109,7 @@ public class InscriptionPeriodDAO extends DAO implements DAOInterface {
 	public int countAll() {
 		ResultSet result;
 		try {
-			result = statement.executeQuery("SELECT count(id) FROM biblio_insc_period;");
+			result = statement.executeQuery("SELECT count(id) FROM inscription_period;");
 			if (result.next()) {
 				return result.getInt("count(id)");
 			}
