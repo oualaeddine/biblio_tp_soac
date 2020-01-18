@@ -12,8 +12,6 @@ public interface DAOInterface {
 
     boolean add(Object object);
 
-    boolean delete(Object object);
-
     LinkedList getAll();
 
     public abstract int countAll();
