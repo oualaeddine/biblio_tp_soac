@@ -1,8 +1,7 @@
-package soac.miniprojet.daos;
+package soac.miniprojet.model.dao;
 
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.LinkedList;
 
 public abstract class DAO {
     protected Statement             statement;

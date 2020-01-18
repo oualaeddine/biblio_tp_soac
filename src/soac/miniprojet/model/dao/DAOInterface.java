@@ -1,4 +1,4 @@
-package soac.miniprojet.daos;
+package soac.miniprojet.model.dao;
 
 import java.util.LinkedList;
 

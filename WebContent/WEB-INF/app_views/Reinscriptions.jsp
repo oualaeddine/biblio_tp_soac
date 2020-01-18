@@ -1,4 +1,4 @@
-<%@ page import="soac.miniprojet.daos.StudentsHomeStub" %>
+<%@ page import="soac.miniprojet.model.dao.StudentsHomeStub" %>
 <%@ page import="java.util.LinkedList" %><%--
   Created by IntelliJ IDEA.
   User: Ouala Eddine

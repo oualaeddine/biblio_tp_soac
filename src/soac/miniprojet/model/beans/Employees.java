@@ -1,4 +1,4 @@
-package soac.miniprojet.daos.beans;
+package soac.miniprojet.model.beans;
 // Generated 7 janv. 2020 11:56:55 by Hibernate Tools 5.4.7.Final
 
 /**

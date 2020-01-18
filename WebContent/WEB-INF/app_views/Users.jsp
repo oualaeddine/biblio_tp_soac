@@ -1,5 +1,5 @@
 <%@ page import="java.util.LinkedList" %>
-<%@ page import="soac.miniprojet.daos.EmployeesHomeStub" %>
+<%@ page import="soac.miniprojet.model.dao.EmployeesHomeStub" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
