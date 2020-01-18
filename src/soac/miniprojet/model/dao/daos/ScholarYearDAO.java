@@ -44,8 +44,13 @@ public class ScholarYearDAO extends DAO implements DAOInterface {
 		return  deleteById(id,"scholar_year");
 	}
 
+    @Override
+    public boolean update(Object object) {
+        return false;
+    }
 
-	@Override
+
+    @Override
 	public boolean add(Object object) {
 		ScholarYear scholarYear = (ScholarYear) object;
 		try {
@@ -93,4 +98,4 @@ public class ScholarYearDAO extends DAO implements DAOInterface {
 			e.printStackTrace();
 		}
 		return 0;
-	}
+	} }
