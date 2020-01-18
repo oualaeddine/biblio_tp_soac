@@ -1,8 +1,5 @@
 package soac.miniprojet;
 
-import soac.miniprojet.daos.EmployeesHomeStub;
-import soac.miniprojet.daos.EmployeesHomeStub.Employees;
-
 public class Main {
 	 public static void main(String[] args) throws Exception {
 	        // Create the stub object

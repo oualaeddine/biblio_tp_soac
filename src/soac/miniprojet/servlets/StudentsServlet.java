@@ -1,7 +1,6 @@
 package soac.miniprojet.servlets;
 
 import soac.miniprojet.api.StudensApi;
-import soac.miniprojet.daos.StudentsHomeStub;
 
 import java.io.IOException;
 import java.util.LinkedList;

@@ -1,7 +1,6 @@
 package soac.miniprojet.servlets;
 
 import soac.miniprojet.api.EmployeesApi;
-import soac.miniprojet.daos.EmployeesHomeStub;
 
 import java.io.IOException;
 import java.util.LinkedList;
