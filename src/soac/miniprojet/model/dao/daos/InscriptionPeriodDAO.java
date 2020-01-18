@@ -34,10 +34,6 @@ public class InscriptionPeriodDAO extends DAO implements DAOInterface {
 		return false;
 	}
 
-	@Override
-	public boolean delete(Object object) {
-		return false;
-	}
 
 	@Override
 	public LinkedList getAll() {
