@@ -38,6 +38,7 @@ public class BiblioInscPeriod implements java.io.Serializable {
 		this.scholarYear = scholarYear;
 	}
 
+
 	public Date getDateStart() {
 		return this.dateStart;
 	}
@@ -45,6 +46,8 @@ public class BiblioInscPeriod implements java.io.Serializable {
 	public void setDateStart(Date dateStart) {
 		this.dateStart = dateStart;
 	}
+
+
 
 	public Date getDateEnd() {
 		return this.dateEnd;

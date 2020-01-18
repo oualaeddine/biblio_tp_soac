@@ -1,7 +1,6 @@
 package soac.miniprojet.model.dao.daos;
 
 
-
 import soac.miniprojet.model.beans.Employees;
 import soac.miniprojet.model.dao.DAO;
 import soac.miniprojet.model.dao.DAOInterface;
@@ -28,11 +27,32 @@ public class EmployeesDAO extends DAO implements DAOInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;    }
+        return null;
+    }
+
+    public boolean isAuth(String username, String password) {
+        ResultSet result;
+        int count = 0;
+        try {
+            result = statement.executeQuery("count(id) FROM Employees " +
+                    " WHERE " +
+                    "`username` like'" + username + "' " +
+                    "and " +
+                    "`password` like'" + password + "' " +
+                    ";");
+            if (result.next()) {
+                count = result.getInt("count(id)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count > 0;
+    }
+
 
     @Override
     public boolean deleteById(int id) {
-        return  deleteById(id,"Employees");
+        return deleteById(id, "Employees");
     }
 
     @Override
@@ -90,6 +110,7 @@ public class EmployeesDAO extends DAO implements DAOInterface {
         }
         return list;
     }
+
     public int countAll() {
         ResultSet result;
         try {
