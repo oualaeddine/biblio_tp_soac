@@ -1,6 +1,7 @@
 package soac.miniprojet.servlets;
 
 import soac.miniprojet.api.StudensApi;
+import soac.miniprojet.model.beans.Students;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -28,7 +29,7 @@ public class ReinscriptionsServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-		LinkedList<StudentsHomeStub.Students> students=new StudensApi().getStudents();
+		LinkedList<Students> students=new StudensApi().getStudents();
 		request.setAttribute("students",students);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/app_views/Students.jsp").forward(request, response);
     }

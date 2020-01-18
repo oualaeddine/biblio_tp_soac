@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class DbConnector {
 
     private static final String
-            db_name = "biblio_soac",
+            db_name = "tp_soac",
             host = "localhost",
             port = "3306",
             user = "root",
@@ -29,7 +29,7 @@ public class DbConnector {
 
     public static void createConnexion() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             if (connexion == null)
                 connexion = DriverManager.getConnection(conn, user, pass);
 

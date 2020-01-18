@@ -37,19 +37,41 @@ public class EmployeesDAO extends DAO implements DAOInterface {
         ResultSet result;
         int count = 0;
         try {
-            result = statement.executeQuery("count(id) FROM Employees " +
+
+            result = statement.executeQuery("select count(id) FROM Employees " +
                     " WHERE " +
-                    "`username` like'" + username + "' " +
+                    "`username` like '" + username + "' " +
                     "and " +
-                    "`password` like'" + password + "' " +
+                    "`password` like '" + password + "' " +
                     ";");
             if (result.next()) {
                 count = result.getInt("count(id)");
+                return count > 0;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return count > 0;
+        return false;
+    }
+
+    public Employees getByUsername(String username) {
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM Employees WHERE username like'" + username + "'");
+            if (result.next()) {
+                Employees employe = new Employees();
+                employe.setId(result.getInt("id"));
+                employe.setNom(result.getString("nom"));
+                employe.setPrenom(result.getString("prenom"));
+                employe.setRole(result.getString("role"));
+                employe.setUsername(result.getString("username"));
+                employe.setPassword(result.getString("password"));
+                return employe;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 
@@ -112,7 +134,6 @@ public class EmployeesDAO extends DAO implements DAOInterface {
                 employe.setRole(result.getString("role"));
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
-
 
                 list.add(employe);
             }

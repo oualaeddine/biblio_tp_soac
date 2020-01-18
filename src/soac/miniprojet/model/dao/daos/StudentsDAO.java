@@ -87,7 +87,7 @@ public class StudentsDAO extends DAO implements DAOInterface {
 				student.setId(result.getInt("id"));
 				student.setNom(result.getString("nom"));
 				student.setPrenom(result.getString("prenom"));
-				student.setDateNaiss(result.getDate("date"));
+				student.setDateNaiss(result.getDate("date_naiss"));
 				student.setSexe(result.getString("sexe"));
 				student.setNumBac(result.getString("num_bac"));
 				student.setDateInsc(result.getDate("date_insc"));
