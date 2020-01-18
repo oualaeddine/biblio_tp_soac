@@ -46,7 +46,19 @@ public class ScholarYearDAO extends DAO implements DAOInterface {
 
     @Override
     public boolean update(Object object) {
-        return false;
+		ScholarYear scholarYear = (ScholarYear) object;
+		try {
+			statement.execute("UPDATE scholar_year SET " +
+					"comments = '" + scholarYear.getComments() + "'," +
+					"start_date = '" + scholarYear.getStartDate() + "'," +
+					"end_date = '" + scholarYear.getEndDate() + "'," +
+
+					" WHERE id=" + scholarYear.getId() + ";");
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
     }
 
 
