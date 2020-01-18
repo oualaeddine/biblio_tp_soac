@@ -21,6 +21,9 @@ public class EmployeesDAO extends DAO implements DAOInterface {
                 employe.setNom(result.getString("nom"));
                 employe.setPrenom(result.getString("prenom"));
                 employe.setRole(result.getString("role"));
+                employe.setUsername(result.getString("username"));
+                employe.setPassword(result.getString("password"));
+
 
                 return employe;
             }
@@ -64,6 +67,9 @@ public class EmployeesDAO extends DAO implements DAOInterface {
                     "nom = '" + employe.getNom() + "'," +
                     "prenom = '" + employe.getPrenom() + "'," +
                     "role = '" + employe.getRole() + "'," +
+                    "username = '" + employe.getUsername() + "'," +
+                    "password = '" + employe.getPassword() + "'," +
+
 
                     " WHERE Employees.id=" + employe.getId() + ";");
             return true;
@@ -77,10 +83,13 @@ public class EmployeesDAO extends DAO implements DAOInterface {
     public boolean add(Object object) {
         Employees employe = (Employees) object;
         try {
-            statement.execute("INSERT INTO Employees (`nom`,`prenom`,`role` ) VALUES(" +
+            statement.execute("INSERT INTO Employees (`nom`,`prenom`,`role`,`username`,`password` ) VALUES(" +
                     "'" + employe.getNom() + "'," +
                     "'" + employe.getPrenom() + "'," +
                     "'" + employe.getRole() + "'" + "," +
+                    "'" + employe.getUsername() + "'," +
+                    "'" + employe.getPassword() + "'" + "," +
+
                     ");");
             return true;
         } catch (SQLException e) {
@@ -101,6 +110,8 @@ public class EmployeesDAO extends DAO implements DAOInterface {
                 employe.setNom(result.getString("nom"));
                 employe.setPrenom(result.getString("prenom"));
                 employe.setRole(result.getString("role"));
+                employe.setUsername(result.getString("username"));
+                employe.setPassword(result.getString("password"));
 
 
                 list.add(employe);
