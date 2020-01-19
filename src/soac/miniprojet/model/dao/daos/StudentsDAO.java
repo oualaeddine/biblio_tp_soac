@@ -77,7 +77,7 @@ public class StudentsDAO extends DAO implements DAOInterface {
 	}
 
 	@Override
-	public LinkedList<Students> getAll() {
+	public LinkedList getAll() {
 		LinkedList<Students> list = new LinkedList<>();
 		ResultSet result;
 		try {

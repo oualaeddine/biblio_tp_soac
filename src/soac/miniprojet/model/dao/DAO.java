@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public abstract class DAO {
-    protected Statement             statement;
+    protected Statement statement;
 
     public DAO() {
         DbConnector.createConnexion();
@@ -14,7 +14,7 @@ public abstract class DAO {
 
 
 
-    protected boolean deleteById(int id, String table) {
+    public boolean deleteById(int id, String table) {
         try {
             statement.execute("DELETE FROM " + table + " WHERE id = " + id);
             return true;

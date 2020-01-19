@@ -49,7 +49,7 @@ public class StudentsBiblioInscDAO extends DAO implements DAOInterface {
     }
 
     @Override
-    public LinkedList<StudentsBiblioInsc> getAll() {
+    public LinkedList getAll() {
         LinkedList<StudentsBiblioInsc> list = new LinkedList<>();
         ResultSet result;
         try {

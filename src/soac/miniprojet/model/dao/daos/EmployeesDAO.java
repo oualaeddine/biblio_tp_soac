@@ -121,7 +121,7 @@ public class EmployeesDAO extends DAO implements DAOInterface {
     }
 
     @Override
-    public LinkedList<Employees> getAll() {
+    public LinkedList getAll() {
         LinkedList<Employees> list = new LinkedList<>();
         ResultSet result;
         try {

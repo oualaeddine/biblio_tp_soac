@@ -74,7 +74,7 @@ public class BiblioInscPeriodDAO extends DAO implements DAOInterface {
     }
 
     @Override
-    public LinkedList<BiblioInscPeriod> getAll() {
+    public LinkedList getAll() {
         LinkedList<BiblioInscPeriod> list = new LinkedList<>();
         ResultSet result;
         try {
