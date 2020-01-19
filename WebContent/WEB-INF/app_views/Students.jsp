@@ -97,30 +97,30 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="nom">Nom : </label>
-                                                <input type="text" id="nom" name="nom" class="form-control">
+                                                <input type="text" id="nom" name="nom" class="form-control" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="prenom">Prenom : </label>
-                                                <input type="text" name="prenom" class="form-control" id="prenom">
+                                                <input type="text" name="prenom" class="form-control" id="prenom" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="date_naiss">Date de naissance : </label>
-                                            <input type="date" id="date_naiss" name="date_naiss" class="form-control">
+                                            <label>Date de naissence : </label>
+                                            <input type="date" id="date_naiss" name="date_naiss" class="form-control" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="sexe">Address 2</label>
-                                            <select id="sexe" name="sexe" class="form-control form-control-lg">
-                                                <option>--Selectionner--</option>
-                                                <option>Homme</option>
-                                                <option>Femme</option>
+                                            <label for="sexe">Sexe : </label>
+                                            <select id="sexe" name="sexe" class="form-control form-control-lg" required>
+                                                <option selected disabled value="">--Selectionner--</option>
+                                                <option value="HOMME">Homme</option>
+                                                <option value="FEMME">Femme</option>
                                             </select>
                                         </div>
 
                                         <div class="form-row">
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-12">
                                                 <label for="bac">Numero Bac</label>
-                                                <input type="text" name="bac" class="form-control" id="bac">
+                                                <input type="number" name="bac" class="form-control" id="bac" required>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -159,7 +159,9 @@
                                             <th>Nom</th>
                                             <th>Prénom</th>
                                             <th>Date de de naissance</th>
-                                            <th>Fonction</th>
+                                            <th>Sexe</th>
+                                            <th>Numero de BAC</th>
+                                            <th>Date d'inscription</th>
                                             <th>Actions</th>
                                         </tr>
                                         </thead>
@@ -188,11 +190,103 @@
                                                 <%= student.getDateInsc()%>
                                             </td>
                                             <td class="text-center" style="padding-top: 0px;">
-                                                <br>
-                                                <button class="btn btn-danger" type="button"><i
-                                                        class="fa fa-remove"></i></button>
-                                                <button class="btn btn-primary" type="button"><i
-                                                        class="fa fa-pecil"></i></button>
+
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-<%= student.getId()%>"><i
+                                                        class="fa fa-remove"></i>
+                                                </button>
+
+                                                <!-- Delete Modal -->
+                                                <div class="modal fade " id="delete-<%= student.getId()%>" data-backdrop="static" tabindex="-1" role="dialog"
+                                                     aria-labelledby="delete-<%= student.getId()%>r" aria-hidden="true">
+                                                    <form>
+                                                        <input type="hidden"  name="action" value="delete" >
+                                                        <input type="hidden"  name="id" value="<%= student.getId()%>" >
+
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="edit-<%= student.getId()%>r">Retirer un etudiant</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <h4>Etes vous sure de vouloire supprimer cet etudiant ?</h4>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-success" data-dismiss="modal">Annuler
+                                                                        </button>
+                                                                        <button type="submit" class="btn btn-warning"><i
+                                                                                class="fa fa-dot-circle-o"></i> Supprimer
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-<%= student.getId()%>"><i
+                                                        class="fa fa-edit"></i>
+                                                </button>
+
+                                                <!-- Edit Modal -->
+                                                <div class="modal fade " id="edit-<%= student.getId()%>" data-backdrop="static" tabindex="-1" role="dialog"
+                                                     aria-labelledby="edit-<%= student.getId()%>r" aria-hidden="true">
+                                                    <form>
+                                                        <input type="hidden"  name="action" value="edit" >
+                                                        <input type="hidden"  name="id" value="<%= student.getId()%>" >
+
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="edit-<%= student.getId()%>r">Modifier un etudiant</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-6">
+                                                                            <label>Nom : </label><input type="text"  name="nom" value="<%= student.getNom()%>" class="form-control" required>
+                                                                        </div>
+                                                                        <div class="form-group col-md-6">
+                                                                            <label>Prenom : </label>
+                                                                            <input type="text" name="prenom" class="form-control" value="<%= student.getPrenom()%>" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Date de naissence : </label>
+                                                                        <input type="date" name="date_naiss" class="form-control" value="<%= student.getDateNaiss()%>" required>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Sexe : </label>
+                                                                        <select name="sexe" class="form-control form-control-lg"required>
+                                                                            <option selected disabled value="">--Selectionner--</option>
+                                                                            <option value="HOMME">Homme</option>
+                                                                            <option value="FEMME">Femme</option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-12">
+                                                                            <label>Numero Bac</label>
+                                                                            <input type="text" name="bac" class="form-control" value="<%= student.getNumBac()%>" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler
+                                                                        </button>
+                                                                        <button type="submit" class="btn btn-success"><i
+                                                                                class="fa fa-dot-circle-o"></i> Ajouter
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
                                             </td>
                                         </tr>
                                         <%
